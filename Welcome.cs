@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using StockPulse.Models;
+﻿using StockPulse.GUI;
 
 namespace StockPulse
 {
@@ -12,42 +11,37 @@ namespace StockPulse
 
         private void Welcome_Load(object sender, EventArgs e)
         {
-            using (var db_context = new Database())
+            SidebarSelection(new WarehouseController(), WarehouseButton);
+            MainPanel.Controls.Add(StatusBarManager.NewStatusBar.StatusBar);
+            StatusBarManager.UpdateStatus("Welcome to StockPulse");
+
+        }
+        private void SidebarSelection(UserControl selectedControl, Button clickedButton)
+        {
+            MainPanel.Controls.Clear();
+            MainPanel.Controls.Add(selectedControl);
+
+            foreach (Control ctrl in SidePanel.Controls)
             {
-                // 1. Create a Manager
-                Manager m1 = new Manager();
-                m1.Name = "Mahmoud Nasr";
-
-
-                var insertedManager = db_context.Add(m1);
-
-
-                db_context.SaveChanges();
-                //2. Create a Warehouse
-
-                Warehouse w1 = new Warehouse();
-
-                w1.manager = m1;
-                w1.Address = "Semouha, Alexandria";
-
-
-                db_context.Add(w1);
-
-
-
-                db_context.SaveChanges();
-
-                foreach (var item in db_context.Warehouses.Include(w => w.manager))
+                if (ctrl is Button btn)
                 {
-                    MessageBox.Show($"Warehouse: {item.Address} is Managed By {item.manager.Name} with an ID {item.manager.Id}");
-
-
+                    btn.Enabled = true;
                 }
-
-
             }
+            clickedButton.Enabled = false;
 
+            int currentHeightOfSidePanel = SidePanel.Height;
 
+            Size = new Size(selectedControl.Width + SidePanel.Width + 15, selectedControl.Height + StatusBarManager.Height + 150);
+
+        }
+
+        private void WarehouseButton_Click(object sender, EventArgs e)
+        {
+            if (sender is Button clickedButton)
+            {
+                SidebarSelection(new WarehouseController(), clickedButton);
+            }
         }
     }
 }

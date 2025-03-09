@@ -5,12 +5,16 @@ namespace StockPulse.Models
 {
     [Table("Manager")]
 
-    class Manager
+    public class Manager
     {
         [Key]
         public int Id { get; set; }
         [StringLength(255)]
         public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -28,19 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
+            SidePanel = new FlowLayoutPanel();
+            WarehouseButton = new Button();
+            button2 = new Button();
+            MainPanel = new Panel();
+            SidePanel.SuspendLayout();
             SuspendLayout();
+            // 
+            // SidePanel
+            // 
+            SidePanel.AutoSize = true;
+            SidePanel.Controls.Add(WarehouseButton);
+            SidePanel.Controls.Add(button2);
+            SidePanel.Dock = DockStyle.Left;
+            SidePanel.FlowDirection = FlowDirection.TopDown;
+            SidePanel.Location = new Point(0, 0);
+            SidePanel.Name = "SidePanel";
+            SidePanel.Padding = new Padding(0, 15, 0, 0);
+            SidePanel.Size = new Size(226, 569);
+            SidePanel.TabIndex = 0;
+            // 
+            // WarehouseButton
+            // 
+            WarehouseButton.AutoSize = true;
+            WarehouseButton.Location = new Point(3, 18);
+            WarehouseButton.Name = "WarehouseButton";
+            WarehouseButton.Size = new Size(220, 35);
+            WarehouseButton.TabIndex = 0;
+            WarehouseButton.Text = "Warehouse Management";
+            WarehouseButton.UseVisualStyleBackColor = true;
+            WarehouseButton.Click += WarehouseButton_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(3, 59);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 1;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(226, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Padding = new Padding(0, 15, 0, 0);
+            MainPanel.Size = new Size(774, 569);
+            MainPanel.TabIndex = 1;
             // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1051, 464);
+            AutoSize = true;
+            ClientSize = new Size(1000, 569);
+            Controls.Add(MainPanel);
+            Controls.Add(SidePanel);
             Name = "Welcome";
             Text = "StockPulse";
             Load += Welcome_Load;
+            SidePanel.ResumeLayout(false);
+            SidePanel.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private FlowLayoutPanel SidePanel;
+        private Button WarehouseButton;
+        private Button button2;
+        private Panel MainPanel;
     }
 }

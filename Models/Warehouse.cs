@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace StockPulse.Models
 {
     [Table("Warehouse")]
-    class Warehouse
+    public class Warehouse
     {
         [Key]
         public int Id { get; private set; }
@@ -12,7 +12,9 @@ namespace StockPulse.Models
         public string Address { get; set; }
 
         [ForeignKey("ManagerId")]
-        public Manager manager { get; set; }
+        public Manager Manager { get; set; }
         public DateTime CreateAt { get; private set; } = DateTime.UtcNow;
+
+        public string Name { get; set; }
     }
 }
