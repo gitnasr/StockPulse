@@ -18,5 +18,9 @@ namespace StockPulse.Models
 
         public List<Stock> Stocks { get; set; } = new List<Stock>();
 
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

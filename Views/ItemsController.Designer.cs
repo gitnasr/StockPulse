@@ -31,31 +31,33 @@
             button1 = new Button();
             groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            CreateNewUnitButton = new Button();
-            label6 = new Label();
             label5 = new Label();
-            ItemCodeTextBox = new TextBox();
-            label3 = new Label();
             ItemQunatityTextBox = new TextBox();
+            CreateItemButton = new Button();
             label1 = new Label();
             label2 = new Label();
             ItemNameTextBox = new TextBox();
             label4 = new Label();
             ItemPriceTextBox = new TextBox();
             ItemWarehouse = new ComboBox();
+            label6 = new Label();
             UnitsListBox = new CheckedListBox();
-            CreateItemButton = new Button();
+            CreateNewUnitButton = new Button();
+            label3 = new Label();
+            ItemCodeTextBox = new TextBox();
+            ItemsView = new DataGridView();
             groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemsView).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(3, 526);
+            button1.Location = new Point(879, 79);
             button1.Name = "button1";
-            button1.Size = new Size(972, 34);
+            button1.Size = new Size(209, 116);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "REFRESH";
             button1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -67,6 +69,7 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Manage Stock";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // tableLayoutPanel1
             // 
@@ -79,6 +82,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 69F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
             tableLayoutPanel1.Controls.Add(label5, 2, 1);
+            tableLayoutPanel1.Controls.Add(button1, 5, 2);
             tableLayoutPanel1.Controls.Add(ItemQunatityTextBox, 1, 1);
             tableLayoutPanel1.Controls.Add(CreateItemButton, 3, 2);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
@@ -102,26 +106,6 @@
             tableLayoutPanel1.Size = new Size(1091, 198);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // CreateNewUnitButton
-            // 
-            CreateNewUnitButton.Location = new Point(388, 79);
-            CreateNewUnitButton.Name = "CreateNewUnitButton";
-            CreateNewUnitButton.Size = new Size(133, 116);
-            CreateNewUnitButton.TabIndex = 1;
-            CreateNewUnitButton.Text = "New Unit";
-            CreateNewUnitButton.UseVisualStyleBackColor = true;
-            CreateNewUnitButton.Click += CreateNewUnitButton_Click;
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Left;
-            label6.AutoSize = true;
-            label6.Location = new Point(3, 124);
-            label6.Name = "label6";
-            label6.Size = new Size(44, 25);
-            label6.TabIndex = 10;
-            label6.Text = "Unit";
-            // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Left;
@@ -132,25 +116,6 @@
             label5.TabIndex = 9;
             label5.Text = "Warehouse";
             // 
-            // ItemCodeTextBox
-            // 
-            ItemCodeTextBox.Anchor = AnchorStyles.Left;
-            ItemCodeTextBox.Enabled = false;
-            ItemCodeTextBox.Location = new Point(879, 3);
-            ItemCodeTextBox.Name = "ItemCodeTextBox";
-            ItemCodeTextBox.Size = new Size(195, 31);
-            ItemCodeTextBox.TabIndex = 7;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Location = new Point(810, 6);
-            label3.Name = "label3";
-            label3.Size = new Size(54, 25);
-            label3.TabIndex = 6;
-            label3.Text = "Code";
-            // 
             // ItemQunatityTextBox
             // 
             ItemQunatityTextBox.Anchor = AnchorStyles.Left;
@@ -158,6 +123,19 @@
             ItemQunatityTextBox.Name = "ItemQunatityTextBox";
             ItemQunatityTextBox.Size = new Size(273, 31);
             ItemQunatityTextBox.TabIndex = 5;
+            ItemQunatityTextBox.TextChanged += ItemQunatityTextBox_TextChanged;
+            ItemQunatityTextBox.KeyPress += ItemQunatityTextBox_KeyPress;
+            // 
+            // CreateItemButton
+            // 
+            tableLayoutPanel1.SetColumnSpan(CreateItemButton, 2);
+            CreateItemButton.Location = new Point(527, 79);
+            CreateItemButton.Name = "CreateItemButton";
+            CreateItemButton.Size = new Size(346, 116);
+            CreateItemButton.TabIndex = 13;
+            CreateItemButton.Text = "Create Item";
+            CreateItemButton.UseVisualStyleBackColor = true;
+            CreateItemButton.Click += CreateItemButton_Click;
             // 
             // label1
             // 
@@ -186,6 +164,7 @@
             ItemNameTextBox.Name = "ItemNameTextBox";
             ItemNameTextBox.Size = new Size(273, 31);
             ItemNameTextBox.TabIndex = 4;
+            ItemNameTextBox.TextChanged += ItemNameTextBox_TextChanged;
             // 
             // label4
             // 
@@ -204,6 +183,7 @@
             ItemPriceTextBox.Name = "ItemPriceTextBox";
             ItemPriceTextBox.Size = new Size(273, 31);
             ItemPriceTextBox.TabIndex = 9;
+            ItemPriceTextBox.KeyPress += ItemPriceTextBox_KeyPress;
             // 
             // ItemWarehouse
             // 
@@ -214,6 +194,17 @@
             ItemWarehouse.Name = "ItemWarehouse";
             ItemWarehouse.Size = new Size(346, 33);
             ItemWarehouse.TabIndex = 12;
+            ItemWarehouse.SelectedIndexChanged += ItemWarehouse_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Left;
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 124);
+            label6.Name = "label6";
+            label6.Size = new Size(44, 25);
+            label6.TabIndex = 10;
+            label6.Text = "Unit";
             // 
             // UnitsListBox
             // 
@@ -223,29 +214,59 @@
             UnitsListBox.Size = new Size(273, 116);
             UnitsListBox.TabIndex = 2;
             // 
-            // CreateItemButton
+            // CreateNewUnitButton
             // 
-            tableLayoutPanel1.SetColumnSpan(CreateItemButton, 2);
-            CreateItemButton.Location = new Point(527, 79);
-            CreateItemButton.Name = "CreateItemButton";
-            CreateItemButton.Size = new Size(346, 116);
-            CreateItemButton.TabIndex = 13;
-            CreateItemButton.Text = "Create Item";
-            CreateItemButton.UseVisualStyleBackColor = true;
+            CreateNewUnitButton.Location = new Point(388, 79);
+            CreateNewUnitButton.Name = "CreateNewUnitButton";
+            CreateNewUnitButton.Size = new Size(133, 116);
+            CreateNewUnitButton.TabIndex = 1;
+            CreateNewUnitButton.Text = "New Unit";
+            CreateNewUnitButton.UseVisualStyleBackColor = true;
+            CreateNewUnitButton.Click += CreateNewUnitButton_Click;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.Location = new Point(810, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 25);
+            label3.TabIndex = 6;
+            label3.Text = "Code";
+            // 
+            // ItemCodeTextBox
+            // 
+            ItemCodeTextBox.Anchor = AnchorStyles.Left;
+            ItemCodeTextBox.Enabled = false;
+            ItemCodeTextBox.Location = new Point(879, 3);
+            ItemCodeTextBox.Name = "ItemCodeTextBox";
+            ItemCodeTextBox.Size = new Size(195, 31);
+            ItemCodeTextBox.TabIndex = 7;
+            // 
+            // ItemsView
+            // 
+            ItemsView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ItemsView.Location = new Point(25, 273);
+            ItemsView.Name = "ItemsView";
+            ItemsView.RowHeadersWidth = 62;
+            ItemsView.Size = new Size(1128, 598);
+            ItemsView.TabIndex = 2;
+            ItemsView.CellContentClick += ItemsView_CellContentClick;
             // 
             // ItemsController
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ItemsView);
             Controls.Add(groupBox1);
-            Controls.Add(button1);
             Name = "ItemsController";
-            Size = new Size(1170, 563);
+            Size = new Size(1170, 883);
             Load += ItemsController_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemsView).EndInit();
             ResumeLayout(false);
         }
 
@@ -268,5 +289,6 @@
         private ComboBox ItemWarehouse;
         private CheckedListBox UnitsListBox;
         private Button CreateItemButton;
+        private DataGridView ItemsView;
     }
 }

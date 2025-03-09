@@ -19,7 +19,9 @@ namespace StockPulse.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Stock>().HasKey(Stock => new { Stock.WarehouseId, Stock.Code });
+            modelBuilder.Entity<Stock>()
+                .HasKey(Stock => new { Stock.WarehouseId, Stock.Code });
+            modelBuilder.Entity<Stock>().Property(stock => stock.Id).ValueGeneratedOnAdd();
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

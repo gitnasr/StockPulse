@@ -4,6 +4,15 @@ namespace StockPulse.Services
 {
     public class WarehouseService
     {
+
+        public List<Warehouse> GetWarehouses()
+        {
+            using (var db = new Database())
+            {
+                var warehouses = db.Warehouses.ToList();
+                return warehouses;
+            }
+        }
         public List<Warehouse> GetWarehousesWithManager()
         {
             using (var db = new Database())

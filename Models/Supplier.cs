@@ -9,7 +9,7 @@
         public string Email { get; set; }
         public string Website { get; set; }
 
-        public Stock Stock { get; set; }
+        public List<Stock> Stock { get; set; }
 
     }
 }
