@@ -15,7 +15,7 @@ namespace StockPulse.Models
 
         public DbSet<Supplier> Suppliers { get; set; }
 
-        public DbSet<SupplyPremit> SupplyPremits { get; set; }
+        public DbSet<SupplyPremit> SupplyPermissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,8 +27,8 @@ namespace StockPulse.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-           .Build();
+                                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                .Build();
             string? ConnectionString = config["ConnectionStrings:DefaultConnection"];
             if (string.IsNullOrWhiteSpace(ConnectionString))
             {

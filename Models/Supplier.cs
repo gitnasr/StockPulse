@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Phone { get; set; }
-        public int Fax { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
 

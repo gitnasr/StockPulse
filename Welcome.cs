@@ -1,4 +1,5 @@
 ﻿using StockPulse.GUI;
+using StockPulse.Views;
 
 namespace StockPulse
 {
@@ -49,6 +50,14 @@ namespace StockPulse
             if (sender is Button clickedButton)
             {
                 SidebarSelection(new ItemsController(), clickedButton);
+            }
+        }
+
+        private void SupplyPremitButton_Click(object sender, EventArgs e)
+        {
+            if (sender is Button clickedButton)
+            {
+                SidebarSelection(new SupplyPremitController(), clickedButton);
             }
         }
     }

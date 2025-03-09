@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            RefreshButton = new Button();
             groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             label5 = new Label();
@@ -51,14 +51,15 @@
             ((System.ComponentModel.ISupportInitialize)ItemsView).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // RefreshButton
             // 
-            button1.Location = new Point(879, 79);
-            button1.Name = "button1";
-            button1.Size = new Size(209, 116);
-            button1.TabIndex = 0;
-            button1.Text = "REFRESH";
-            button1.UseVisualStyleBackColor = true;
+            RefreshButton.Location = new Point(879, 79);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Size = new Size(209, 116);
+            RefreshButton.TabIndex = 0;
+            RefreshButton.Text = "REFRESH";
+            RefreshButton.UseVisualStyleBackColor = true;
+            RefreshButton.Click += RefreshButton_Click;
             // 
             // groupBox1
             // 
@@ -69,7 +70,6 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Manage Stock";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // tableLayoutPanel1
             // 
@@ -82,7 +82,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 69F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
             tableLayoutPanel1.Controls.Add(label5, 2, 1);
-            tableLayoutPanel1.Controls.Add(button1, 5, 2);
+            tableLayoutPanel1.Controls.Add(RefreshButton, 5, 2);
             tableLayoutPanel1.Controls.Add(ItemQunatityTextBox, 1, 1);
             tableLayoutPanel1.Controls.Add(CreateItemButton, 3, 2);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
@@ -251,7 +251,6 @@
             ItemsView.RowHeadersWidth = 62;
             ItemsView.Size = new Size(1128, 598);
             ItemsView.TabIndex = 2;
-            ItemsView.CellContentClick += ItemsView_CellContentClick;
             // 
             // ItemsController
             // 
@@ -272,7 +271,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button RefreshButton;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label1;

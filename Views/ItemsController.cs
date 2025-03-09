@@ -105,6 +105,8 @@ namespace StockPulse
                 StockService itemService = new StockService();
                 itemService.CreateNewStock(Name, Code, Quantity, Price, UnitIds, WarehouseId);
                 Alerts.ShowSuccess("Item created successfully");
+                LoadItems();
+
             }
             catch (Exception ex)
             {
@@ -159,13 +161,9 @@ namespace StockPulse
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ItemsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            LoadItems();
 
         }
     }

@@ -31,6 +31,7 @@
             SidePanel = new FlowLayoutPanel();
             WarehouseButton = new Button();
             StockManageButton = new Button();
+            SupplyPremitButton = new Button();
             MainPanel = new Panel();
             SidePanel.SuspendLayout();
             SuspendLayout();
@@ -40,6 +41,7 @@
             SidePanel.AutoSize = true;
             SidePanel.Controls.Add(WarehouseButton);
             SidePanel.Controls.Add(StockManageButton);
+            SidePanel.Controls.Add(SupplyPremitButton);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.FlowDirection = FlowDirection.TopDown;
             SidePanel.Location = new Point(0, 0);
@@ -70,6 +72,18 @@
             StockManageButton.Text = "Stock Management";
             StockManageButton.UseVisualStyleBackColor = true;
             StockManageButton.Click += button2_Click;
+            // 
+            // SupplyPremitButton
+            // 
+            SupplyPremitButton.AutoSize = true;
+            SupplyPremitButton.Dock = DockStyle.Top;
+            SupplyPremitButton.Location = new Point(3, 100);
+            SupplyPremitButton.Name = "SupplyPremitButton";
+            SupplyPremitButton.Size = new Size(220, 35);
+            SupplyPremitButton.TabIndex = 2;
+            SupplyPremitButton.Text = "New Supply Premit";
+            SupplyPremitButton.UseVisualStyleBackColor = true;
+            SupplyPremitButton.Click += SupplyPremitButton_Click;
             // 
             // MainPanel
             // 
@@ -103,5 +117,6 @@
         private Button WarehouseButton;
         private Button StockManageButton;
         private Panel MainPanel;
+        private Button SupplyPremitButton;
     }
 }
