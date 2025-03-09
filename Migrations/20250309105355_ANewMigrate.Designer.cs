@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockPulse.Models;
 
@@ -11,9 +12,11 @@ using StockPulse.Models;
 namespace StockPulse.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20250309105355_ANewMigrate")]
+    partial class ANewMigrate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,9 +154,10 @@ namespace StockPulse.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StockCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("StockWarehouseId")
+                    b.Property<int>("StockWarehouseId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -232,9 +236,13 @@ namespace StockPulse.Migrations
 
             modelBuilder.Entity("StockPulse.Models.Unit", b =>
                 {
-                    b.HasOne("StockPulse.Models.Stock", null)
+                    b.HasOne("StockPulse.Models.Stock", "Stock")
                         .WithMany("Units")
-                        .HasForeignKey("StockWarehouseId", "StockCode");
+                        .HasForeignKey("StockWarehouseId", "StockCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("StockPulse.Models.Warehouse", b =>

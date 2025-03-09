@@ -9,6 +9,19 @@ namespace StockPulse.Models
     {
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Unit> Units { get; set; }
+
+        public DbSet<Supplier> Suppliers { get; set; }
+
+        public DbSet<SupplyPremit> SupplyPremits { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Stock>().HasKey(Stock => new { Stock.WarehouseId, Stock.Code });
+            base.OnModelCreating(modelBuilder);
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())

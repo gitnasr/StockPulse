@@ -11,10 +11,12 @@ namespace StockPulse.Models
         [StringLength(255)]
         public string Address { get; set; }
 
-        [ForeignKey("ManagerId")]
         public Manager Manager { get; set; }
         public DateTime CreateAt { get; private set; } = DateTime.UtcNow;
 
         public string Name { get; set; }
+
+        public List<Stock> Stocks { get; set; } = new List<Stock>();
+
     }
 }

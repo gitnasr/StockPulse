@@ -12,7 +12,6 @@ namespace StockPulse
         private void Welcome_Load(object sender, EventArgs e)
         {
             SidebarSelection(new WarehouseController(), WarehouseButton);
-            MainPanel.Controls.Add(StatusBarManager.NewStatusBar.StatusBar);
             StatusBarManager.UpdateStatus("Welcome to StockPulse");
 
         }
@@ -33,6 +32,7 @@ namespace StockPulse
             int currentHeightOfSidePanel = SidePanel.Height;
 
             Size = new Size(selectedControl.Width + SidePanel.Width + 15, selectedControl.Height + StatusBarManager.Height + 150);
+            MainPanel.Controls.Add(StatusBarManager.NewStatusBar.StatusBar);
 
         }
 
@@ -41,6 +41,14 @@ namespace StockPulse
             if (sender is Button clickedButton)
             {
                 SidebarSelection(new WarehouseController(), clickedButton);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (sender is Button clickedButton)
+            {
+                SidebarSelection(new ItemsController(), clickedButton);
             }
         }
     }
