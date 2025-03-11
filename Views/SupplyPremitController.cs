@@ -1,4 +1,5 @@
-﻿using StockPulse.GUI;
+﻿using StockPulse.Dialog;
+using StockPulse.GUI;
 using StockPulse.Models;
 using StockPulse.Services;
 
@@ -22,6 +23,7 @@ namespace StockPulse.Views
             ItemList.DataSource = stocks;
             ItemList.DisplayMember = "Name";
             ItemList.ValueMember = "Id";
+
         }
 
 
@@ -32,6 +34,10 @@ namespace StockPulse.Views
             SupplierFaxTextBox.Text = "";
             SupplierEmailTextBox.Text = "";
             SupplierWebsiteTextBox.Text = "";
+
+
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,6 +60,10 @@ namespace StockPulse.Views
             List<Supplier> Suppliers = supplierService.GetAllSuppliers();
 
             SuppliersView.DataSource = Suppliers;
+            SuppliersView.MultiSelect = false;
+            SuppliersView.Columns["Id"].Visible = false;
+            SuppliersView.Columns["SupplyPremits"].Visible = false;
+
             SupplierComboBox.DataSource = Suppliers;
             SupplierComboBox.DisplayMember = "Name";
             SupplierComboBox.ValueMember = "Id";
@@ -63,6 +73,14 @@ namespace StockPulse.Views
         {
             List<SupplyPremit> supplyPermissions = supplyPermissionService.GetAllSupplyPermissions();
             SupplyPremitView.DataSource = supplyPermissions;
+            SupplyPremitView.DoubleClick += (sender, e) =>
+            {
+                var selectedSupplier = SupplyPremitView.SelectedRows[0].DataBoundItem as SupplyPremit;
+                SupplyPremitItems SupplyPrimtItems = new SupplyPremitItems(selectedSupplier.Stocks);
+                var result = SupplyPrimtItems.ShowDialog();
+
+            };
+
         }
         private void tabPage1_Enter(object sender, EventArgs e)
         {
@@ -73,16 +91,25 @@ namespace StockPulse.Views
         {
             DateTime ManufacturedAt = ManufacturedAtPicker.Value;
             DateTime ExpiresAt = ExpiresAtPick.Value;
-            List<Stock> Items = ItemList.SelectedItems.Cast<Stock>().ToList();
+            List<Stock> Items = ItemList.CheckedItems.Cast<Stock>().ToList();
             int SupplierId = (int)SupplierComboBox.SelectedValue;
             supplyPermissionService.CreateSupplyPermission(SupplierId, ManufacturedAt, ExpiresAt, Items);
 
-            //Alerts.ShowSuccess("Supply premit created successfully");
             LoadSupplyPremit();
-
+            LoadStocks();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SuppliersView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

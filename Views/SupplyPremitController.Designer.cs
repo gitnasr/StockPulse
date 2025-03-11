@@ -213,6 +213,7 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Manager Suppliers";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
             tabPage1.Enter += tabPage1_Enter;
             // 
             // SuppliersView
@@ -227,6 +228,7 @@
             SuppliersView.RowHeadersWidth = 62;
             SuppliersView.Size = new Size(1261, 772);
             SuppliersView.TabIndex = 0;
+            SuppliersView.CellContentClick += SuppliersView_CellContentClick;
             // 
             // tabPage2
             // 

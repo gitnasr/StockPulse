@@ -61,12 +61,5 @@ namespace StockPulse
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (sender is Button clickedButton)
-            {
-                SidebarSelection(new SupplyPremitController(), clickedButton);
-            }
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace StockPulse.Services
                 return db.SupplyPermissions
                     .Include(supplyPermission => supplyPermission.Supplier)
                     .Include(supplyPermission => supplyPermission.Stocks)
+                    .ThenInclude(stock => stock.Warehouse)
                     .ToList();
 
 
