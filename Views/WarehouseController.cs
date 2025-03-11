@@ -26,7 +26,7 @@ namespace StockPulse
             int WarehouseId = (int)WarehouseTableView.SelectedRows[0].Cells["Id"].Value!;
             Warehouse warehouse = WarehouseService.GetWarehouseById(WarehouseId);
             WarehouseNameTextBox.Text = warehouse.Name;
-            WarehouseAddressTextbox.Text = warehouse.Address;
+            WarehouseAddressTextbox.Text = warehouse.Location;
             ChooseManagerCombobox.SelectedValue = warehouse.Manager.Id;
             CreateUpdateWarehouseButton.Text = "Update Warehouse";
             CreateUpdateWarehouseButton.Click -= CreateWarehouseButton_Click;

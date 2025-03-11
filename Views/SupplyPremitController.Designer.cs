@@ -44,12 +44,23 @@
             tabPage1 = new TabPage();
             SuppliersView = new DataGridView();
             tabPage2 = new TabPage();
+            SupplyPremitView = new DataGridView();
             panel1 = new Panel();
+            panel2 = new Panel();
+            CreatePremitButton = new Button();
+            label6 = new Label();
+            ItemList = new CheckedListBox();
+            ExpiresAtPick = new DateTimePicker();
+            ManufacturedAtPicker = new DateTimePicker();
+            SupplierComboBox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SuppliersView).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SupplyPremitView).BeginInit();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // CreateSupplierButton
@@ -219,6 +230,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(SupplyPremitView);
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -226,6 +238,19 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Manage Supply Premits";
             tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Click += tabPage2_Click;
+            // 
+            // SupplyPremitView
+            // 
+            SupplyPremitView.AllowUserToAddRows = false;
+            SupplyPremitView.AllowUserToDeleteRows = false;
+            SupplyPremitView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SupplyPremitView.Location = new Point(21, 72);
+            SupplyPremitView.Name = "SupplyPremitView";
+            SupplyPremitView.ReadOnly = true;
+            SupplyPremitView.RowHeadersWidth = 62;
+            SupplyPremitView.Size = new Size(1228, 660);
+            SupplyPremitView.TabIndex = 0;
             // 
             // panel1
             // 
@@ -236,21 +261,87 @@
             panel1.Size = new Size(483, 248);
             panel1.TabIndex = 3;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(CreatePremitButton);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(ItemList);
+            panel2.Controls.Add(ExpiresAtPick);
+            panel2.Controls.Add(ManufacturedAtPicker);
+            panel2.Controls.Add(SupplierComboBox);
+            panel2.Location = new Point(492, 28);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(782, 248);
+            panel2.TabIndex = 4;
+            // 
+            // CreatePremitButton
+            // 
+            CreatePremitButton.Location = new Point(642, 28);
+            CreatePremitButton.Name = "CreatePremitButton";
+            CreatePremitButton.Size = new Size(122, 207);
+            CreatePremitButton.TabIndex = 5;
+            CreatePremitButton.Text = "Premit";
+            CreatePremitButton.UseVisualStyleBackColor = true;
+            CreatePremitButton.Click += CreatePremitButton_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(19, 12);
+            label6.Name = "label6";
+            label6.Size = new Size(77, 25);
+            label6.TabIndex = 4;
+            label6.Text = "Supplier";
+            // 
+            // ItemList
+            // 
+            ItemList.FormattingEnabled = true;
+            ItemList.Location = new Point(19, 119);
+            ItemList.Name = "ItemList";
+            ItemList.Size = new Size(615, 116);
+            ItemList.TabIndex = 3;
+            // 
+            // ExpiresAtPick
+            // 
+            ExpiresAtPick.Location = new Point(325, 79);
+            ExpiresAtPick.Name = "ExpiresAtPick";
+            ExpiresAtPick.Size = new Size(309, 31);
+            ExpiresAtPick.TabIndex = 2;
+            // 
+            // ManufacturedAtPicker
+            // 
+            ManufacturedAtPicker.Location = new Point(19, 79);
+            ManufacturedAtPicker.Name = "ManufacturedAtPicker";
+            ManufacturedAtPicker.Size = new Size(300, 31);
+            ManufacturedAtPicker.TabIndex = 1;
+            // 
+            // SupplierComboBox
+            // 
+            SupplierComboBox.FormattingEnabled = true;
+            SupplierComboBox.Location = new Point(19, 40);
+            SupplierComboBox.Name = "SupplierComboBox";
+            SupplierComboBox.Size = new Size(615, 33);
+            SupplierComboBox.TabIndex = 0;
+            // 
             // SupplyPremitController
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(tabControl1);
             Name = "SupplyPremitController";
             Size = new Size(1292, 1110);
-            Load += SupplyPremitController_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SuppliersView).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SupplyPremitView).EndInit();
             panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -273,5 +364,13 @@
         private TabPage tabPage2;
         private Panel panel1;
         private DataGridView SuppliersView;
+        private Panel panel2;
+        private DateTimePicker ExpiresAtPick;
+        private DateTimePicker ManufacturedAtPicker;
+        private ComboBox SupplierComboBox;
+        private CheckedListBox ItemList;
+        private Label label6;
+        private Button CreatePremitButton;
+        private DataGridView SupplyPremitView;
     }
 }

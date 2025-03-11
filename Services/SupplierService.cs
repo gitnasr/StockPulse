@@ -4,6 +4,16 @@ namespace StockPulse.Services
 {
     public class SupplierService
     {
+
+        public Supplier GetSupplierById(int id)
+        {
+            using (var db = new Database())
+            {
+
+                return db.Suppliers.First(supplier => supplier.Id == id);
+
+            }
+        }
         public void CreateSupplier(string Name, string Phone, string Fax, string Email, string Website)
         {
 

@@ -5,8 +5,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public List<Stock> Stocks { get; set; } = new List<Stock>();
+        public ICollection<StockUnit> StockUnits { get; set; } = new List<StockUnit>();
 
         public override string ToString()
         {
@@ -14,4 +13,5 @@
         }
 
     }
+
 }

@@ -15,7 +15,7 @@ namespace StockPulse.Services
             {
                 var stocks = db.Stocks
                     .Include(stock => stock.Warehouse)
-                    .Include(stock => stock.Units)
+                    .Include(stock => stock.StockUnits)
                     .Select(stock => new
                    StockViewModel
                     {
@@ -25,7 +25,7 @@ namespace StockPulse.Services
                         Code = stock.Code,
                         Price = stock.Price,
                         Warehouse = stock.Warehouse.Name,
-                        UnitNames = string.Join(", ", stock.Units.Select(u => u.Name))
+                        UnitNames = string.Join(", ", stock.StockUnits.Select(u => u.Stock.Name))
                     })
                     .ToList();
 
@@ -33,6 +33,19 @@ namespace StockPulse.Services
             }
         }
 
+        public List<Stock> GetStocksWithoutSuppliers()
+        {
+
+            using (var db = new Database())
+            {
+                return db.Stocks
+                    .Include(stock => stock.Warehouse)
+                    .Where(stock => stock.SupplyPremit == null)
+                    .ToList();
+            }
+
+
+        }
         public void CreateNewStock(string ItemName, string ItemCode, int Quantity, int Price, int[] UnitIds, int WarehouseId)
 
         {
@@ -45,7 +58,12 @@ namespace StockPulse.Services
                     Code = ItemCode,
                     Quantity = Quantity,
                     Price = Price,
-                    Units = db.Units.Where((unit) => UnitIds.Contains(unit.Id)).ToList(),
+                    //StockUnits = db.Units.Where((unit) =>
+                    ////UnitIds.Contains(unit.Id)).Select((unit) => new StockUnit
+                    ////{
+                    ////    Stock = stock,
+                    ////    Unit = unit
+                    ////}).ToList(),
                     Warehouse = db.Warehouses.Find(WarehouseId)
                 };
                 db.Stocks.Add(stock);

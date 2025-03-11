@@ -33,6 +33,7 @@
             StockManageButton = new Button();
             SupplyPremitButton = new Button();
             MainPanel = new Panel();
+            button1 = new Button();
             SidePanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             SidePanel.Controls.Add(WarehouseButton);
             SidePanel.Controls.Add(StockManageButton);
             SidePanel.Controls.Add(SupplyPremitButton);
+            SidePanel.Controls.Add(button1);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.FlowDirection = FlowDirection.TopDown;
             SidePanel.Location = new Point(0, 0);
@@ -94,6 +96,16 @@
             MainPanel.Size = new Size(774, 569);
             MainPanel.TabIndex = 1;
             // 
+            // button1
+            // 
+            button1.Location = new Point(3, 141);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -118,5 +130,6 @@
         private Button StockManageButton;
         private Panel MainPanel;
         private Button SupplyPremitButton;
+        private Button button1;
     }
 }

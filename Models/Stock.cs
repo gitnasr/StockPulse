@@ -1,20 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace StockPulse.Models
+﻿namespace StockPulse.Models
 {
     public class Stock
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Quantity { get; set; }
         public string Code { get; set; }
         public decimal Price { get; set; }
-
-        public List<Unit> Units { get; set; } = new List<Unit>();
-
-        [ForeignKey("Warehouse")]
+        public int Quantity { get; set; }
         public int WarehouseId { get; set; }
         public Warehouse Warehouse { get; set; }
-
+        public int? SupplyPremitId { get; set; }
+        public SupplyPremit SupplyPremit { get; set; }
+        public ICollection<StockUnit> StockUnits { get; set; } = new List<StockUnit>();
     }
 }
