@@ -247,11 +247,12 @@
             SupplyPremitView.AllowUserToAddRows = false;
             SupplyPremitView.AllowUserToDeleteRows = false;
             SupplyPremitView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SupplyPremitView.Location = new Point(21, 72);
+            SupplyPremitView.Dock = DockStyle.Fill;
+            SupplyPremitView.Location = new Point(3, 3);
             SupplyPremitView.Name = "SupplyPremitView";
             SupplyPremitView.ReadOnly = true;
             SupplyPremitView.RowHeadersWidth = 62;
-            SupplyPremitView.Size = new Size(1228, 660);
+            SupplyPremitView.Size = new Size(1261, 772);
             SupplyPremitView.TabIndex = 0;
             // 
             // panel1
