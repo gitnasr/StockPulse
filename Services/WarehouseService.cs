@@ -4,6 +4,15 @@ namespace StockPulse.Services
 {
     public class WarehouseService
     {
+
+        public List<Warehouse> GetWarehouses()
+        {
+            using (var db = new Database())
+            {
+                var warehouses = db.Warehouses.ToList();
+                return warehouses;
+            }
+        }
         public List<Warehouse> GetWarehousesWithManager()
         {
             using (var db = new Database())
@@ -38,7 +47,7 @@ namespace StockPulse.Services
                 var warehouse = new Warehouse
                 {
                     Name = name,
-                    Address = address,
+                    Location = address,
                     Manager = db.Managers.First((manager) => manager.Id == managerId)
                 };
                 db.Warehouses.Add(warehouse);
@@ -53,7 +62,7 @@ namespace StockPulse.Services
 
                 var warehouse = db.Warehouses.First((warehouse) => warehouse.Id == warehouseId);
                 warehouse.Name = warehouseName;
-                warehouse.Address = warehouseAddress;
+                warehouse.Location = warehouseAddress;
                 warehouse.Manager = db.Managers.First((manager) => manager.Id == managerId);
                 db.SaveChanges();
 

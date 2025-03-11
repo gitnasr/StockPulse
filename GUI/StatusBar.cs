@@ -2,12 +2,12 @@
 {
     public class StatusBarManager
     {
-        private static StatusBarManager instance;
+        private static StatusBarManager? instance;
         public StatusStrip StatusBar { get; private set; }
-        private static ToolStripStatusLabel statusLabel;
+        private static ToolStripStatusLabel? statusLabel;
         public static int Height { get; private set; }
 
-        public static bool isHasText => statusLabel.Text != "";
+        public static bool isHasText => statusLabel?.Text != "";
         private StatusBarManager()
         {
             StatusBar = new StatusStrip();
@@ -28,10 +28,11 @@
 
         public static void UpdateStatus(string? message)
         {
-            if (message == null)
+            if (message == null || statusLabel == null)
             {
                 return;
             }
+
             statusLabel.Text = message;
         }
 

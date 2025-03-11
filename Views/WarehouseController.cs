@@ -26,7 +26,7 @@ namespace StockPulse
             int WarehouseId = (int)WarehouseTableView.SelectedRows[0].Cells["Id"].Value!;
             Warehouse warehouse = WarehouseService.GetWarehouseById(WarehouseId);
             WarehouseNameTextBox.Text = warehouse.Name;
-            WarehouseAddressTextbox.Text = warehouse.Address;
+            WarehouseAddressTextbox.Text = warehouse.Location;
             ChooseManagerCombobox.SelectedValue = warehouse.Manager.Id;
             CreateUpdateWarehouseButton.Text = "Update Warehouse";
             CreateUpdateWarehouseButton.Click -= CreateWarehouseButton_Click;
@@ -63,7 +63,7 @@ namespace StockPulse
         private void LoadManagers()
         {
             ChooseManagerCombobox.SelectedIndex = 0;
-            List<Manager> managers = WarehouseService.GetManagers();
+            List<Manager> managers = ManagerService.GetManagers();
             managers.Insert(0, new Manager { Id = -1, Name = "Choose a Manager" });
 
             ChooseManagerCombobox.DataSource = managers;
@@ -178,7 +178,7 @@ namespace StockPulse
                     throw new Exception("Manager name cannot be empty or a number");
                 }
 
-                Manager manager = WarehouseService.CreateManager(ManagerNameTextbox.Text);
+                Manager manager = ManagerService.CreateManager(ManagerNameTextbox.Text);
                 if (manager == null)
                 {
                     throw new Exception("Manager creation failed");

@@ -1,15 +1,17 @@
 ﻿namespace StockPulse.Models
 {
 
-    public class Manager
+    public class Unit
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<StockUnit> StockUnits { get; set; } = new List<StockUnit>();
 
-        public Warehouse Warehouse { get; set; }
         public override string ToString()
         {
             return Name;
         }
+
     }
+
 }
