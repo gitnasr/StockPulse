@@ -32,8 +32,8 @@
             WarehouseButton = new Button();
             StockManageButton = new Button();
             SupplyPremitButton = new Button();
-            MainPanel = new Panel();
             button1 = new Button();
+            MainPanel = new Panel();
             SidePanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,15 +87,6 @@
             SupplyPremitButton.UseVisualStyleBackColor = true;
             SupplyPremitButton.Click += SupplyPremitButton_Click;
             // 
-            // MainPanel
-            // 
-            MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(226, 0);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Padding = new Padding(0, 15, 0, 0);
-            MainPanel.Size = new Size(774, 569);
-            MainPanel.TabIndex = 1;
-            // 
             // button1
             // 
             button1.Location = new Point(3, 141);
@@ -104,6 +95,16 @@
             button1.TabIndex = 3;
             button1.Text = "New Dispose Premit";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(226, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Padding = new Padding(0, 15, 0, 0);
+            MainPanel.Size = new Size(774, 569);
+            MainPanel.TabIndex = 1;
             // 
             // Welcome
             // 

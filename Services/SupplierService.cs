@@ -1,4 +1,5 @@
-﻿using StockPulse.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using StockPulse.Models;
 
 namespace StockPulse.Services
 {
@@ -43,6 +44,24 @@ namespace StockPulse.Services
 
                 return db.Suppliers.ToList();
 
+            }
+
+        }
+
+        public List<Stock> GetItemsBySupplierId(int id)
+        {
+
+            using (var db = new Database())
+            {
+                var supplier = db.Suppliers.
+                    Include(supplier => supplier.SupplyPremits).ThenInclude(supplyPremit => supplyPremit.Stocks).
+                    First(supplier => supplier.Id == id);
+
+
+
+
+
+                return supplier.SupplyPremits.SelectMany(supplyPremit => supplyPremit.Stocks).ToList();
             }
 
         }
