@@ -10,6 +10,8 @@
         public string Fax { get; set; }
         public ICollection<SupplyPremit> SupplyPremits { get; set; } = new List<SupplyPremit>();
 
+        public ICollection<DisposePremit> DisposePremits { get; set; } = new List<DisposePremit>();
+
 
         public override string ToString()
         {

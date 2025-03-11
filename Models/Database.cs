@@ -17,6 +17,12 @@ namespace StockPulse.Models
 
         public DbSet<SupplyPremit> SupplyPermissions { get; set; }
 
+        public DbSet<StockUnit> StockUnits { get; set; }
+
+        public DbSet<DisposePremit> DisposePremits { get; set; }
+
+        public DbSet<Customer> Customer { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Database).Assembly);
