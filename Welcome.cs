@@ -68,5 +68,13 @@ namespace StockPulse
                 SidebarSelection(new DisposePremit(), clickedButton);
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (sender is Button clickedButton)
+            {
+                SidebarSelection(new TransferView(), clickedButton);
+            }
+        }
     }
 }

@@ -44,14 +44,16 @@
             panel1 = new Panel();
             FetchItemsButton = new Button();
             SupplierComboBox = new ComboBox();
-            label7 = new Label();
             CreatePremitButton = new Button();
+            label7 = new Label();
             label6 = new Label();
             ItemList = new CheckedListBox();
             CustomerComboBox = new ComboBox();
+            DisposePremitView = new DataGridView();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DisposePremitView).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -223,15 +225,6 @@
             SupplierComboBox.Size = new Size(615, 33);
             SupplierComboBox.TabIndex = 7;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(19, 76);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 25);
-            label7.TabIndex = 6;
-            label7.Text = "Supplier";
-            // 
             // CreatePremitButton
             // 
             CreatePremitButton.Location = new Point(640, 40);
@@ -240,6 +233,16 @@
             CreatePremitButton.TabIndex = 5;
             CreatePremitButton.Text = "Premit";
             CreatePremitButton.UseVisualStyleBackColor = true;
+            CreatePremitButton.Click += CreatePremitButton_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(19, 76);
+            label7.Name = "label7";
+            label7.Size = new Size(77, 25);
+            label7.TabIndex = 6;
+            label7.Text = "Supplier";
             // 
             // label6
             // 
@@ -267,20 +270,34 @@
             CustomerComboBox.Size = new Size(615, 33);
             CustomerComboBox.TabIndex = 0;
             // 
+            // DisposePremitView
+            // 
+            DisposePremitView.AllowUserToAddRows = false;
+            DisposePremitView.AllowUserToDeleteRows = false;
+            DisposePremitView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DisposePremitView.Location = new Point(13, 274);
+            DisposePremitView.Name = "DisposePremitView";
+            DisposePremitView.ReadOnly = true;
+            DisposePremitView.RowHeadersWidth = 62;
+            DisposePremitView.Size = new Size(1261, 656);
+            DisposePremitView.TabIndex = 6;
+            // 
             // DisposePremit
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(DisposePremitView);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "DisposePremit";
-            Size = new Size(1545, 962);
+            Size = new Size(1305, 962);
             Load += DisposePremit_Load;
             panel2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DisposePremitView).EndInit();
             ResumeLayout(false);
         }
 
@@ -307,5 +324,6 @@
         private ComboBox SupplierComboBox;
         private Label label7;
         private Button FetchItemsButton;
+        private DataGridView DisposePremitView;
     }
 }

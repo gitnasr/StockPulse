@@ -14,6 +14,10 @@
         public ICollection<DisposePremit> DisposePremits { get; set; } = new List<DisposePremit>();
 
 
+        public override string ToString()
+        {
+            return Name;
+        }
 
 
 

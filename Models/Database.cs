@@ -23,6 +23,8 @@ namespace StockPulse.Models
 
         public DbSet<Customer> Customer { get; set; }
 
+        public DbSet<Transfer> Transfers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Database).Assembly);

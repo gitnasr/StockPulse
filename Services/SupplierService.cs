@@ -53,15 +53,12 @@ namespace StockPulse.Services
 
             using (var db = new Database())
             {
-                var supplier = db.Suppliers.
-                    Include(supplier => supplier.SupplyPremits).ThenInclude(supplyPremit => supplyPremit.Stocks).
-                    First(supplier => supplier.Id == id);
+                var supplier = db.Suppliers
+                    .Include(supplier => supplier.SupplyPremits)
+                    .ThenInclude(supplyPremit => supplyPremit.Stocks)
+                    .First(supplier => supplier.Id == id);
 
-
-
-
-
-                return supplier.SupplyPremits.SelectMany(supplyPremit => supplyPremit.Stocks).ToList();
+                return supplier.SupplyPremits.SelectMany(supplyPremit => supplyPremit.Stocks).Where(stock => stock.Quantity > 0).ToList();
             }
 
         }
