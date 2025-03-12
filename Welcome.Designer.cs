@@ -33,8 +33,9 @@
             StockManageButton = new Button();
             SupplyPremitButton = new Button();
             button1 = new Button();
-            MainPanel = new Panel();
             button2 = new Button();
+            button3 = new Button();
+            MainPanel = new Panel();
             SidePanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             SidePanel.Controls.Add(SupplyPremitButton);
             SidePanel.Controls.Add(button1);
             SidePanel.Controls.Add(button2);
+            SidePanel.Controls.Add(button3);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.FlowDirection = FlowDirection.TopDown;
             SidePanel.Location = new Point(0, 0);
@@ -99,15 +101,6 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // MainPanel
-            // 
-            MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(226, 0);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Padding = new Padding(0, 15, 0, 0);
-            MainPanel.Size = new Size(774, 569);
-            MainPanel.TabIndex = 1;
-            // 
             // button2
             // 
             button2.Location = new Point(3, 181);
@@ -117,6 +110,24 @@
             button2.Text = "Transfer";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(3, 221);
+            button3.Name = "button3";
+            button3.Size = new Size(220, 34);
+            button3.TabIndex = 5;
+            button3.Text = "Reports";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(226, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Padding = new Padding(0, 15, 0, 0);
+            MainPanel.Size = new Size(774, 569);
+            MainPanel.TabIndex = 1;
             // 
             // Welcome
             // 
@@ -144,5 +155,6 @@
         private Button SupplyPremitButton;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
