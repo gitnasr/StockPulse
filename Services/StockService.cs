@@ -2,8 +2,6 @@
 using StockPulse.Inerfaces;
 using StockPulse.Models;
 
-
-
 namespace StockPulse.Services
 {
     public class StockService
@@ -46,6 +44,17 @@ namespace StockPulse.Services
 
 
         }
+
+        public Stock GetStockById(int id)
+        {
+            using (var db = new Database())
+            {
+                return db.Stocks
+                    .Include(stock => stock.Warehouse)
+                    .Include(stock => stock.StockUnits)
+                    .First(stock => stock.Id == id);
+            }
+        }
         public void CreateNewStock(string ItemName, string ItemCode, int Quantity, int Price, int[] UnitIds, int WarehouseId)
 
         {
@@ -58,18 +67,46 @@ namespace StockPulse.Services
                     Code = ItemCode,
                     Quantity = Quantity,
                     Price = Price,
-                    //StockUnits = db.Units.Where((unit) =>
-                    ////UnitIds.Contains(unit.Id)).Select((unit) => new StockUnit
-                    ////{
-                    ////    Stock = stock,
-                    ////    Unit = unit
-                    ////}).ToList(),
                     Warehouse = db.Warehouses.Find(WarehouseId)
                 };
                 db.Stocks.Add(stock);
                 db.SaveChanges();
 
 
+            }
+        }
+
+        public void UpdateStock(Stock stock)
+        {
+            using (var db = new Database())
+            {
+
+                db.Stocks.Update(stock);
+                db.SaveChanges();
+
+            }
+        }
+
+        public List<Stock> GetStocksByWarehouseId(int id)
+        {
+            using (var db = new Database())
+            {
+                return db.Stocks
+                    .Include(stock => stock.Warehouse)
+                    .Where(stock => stock.WarehouseId == id)
+                    .ToList();
+            }
+        }
+
+        public List<Supplier> GetSuppliersByWarehouseId(int id)
+        {
+            using (var db = new Database())
+            {
+                return db.Suppliers
+                    .Include(supplier => supplier.SupplyPremits)
+            .Where(supplier => supplier.SupplyPremits.Any(sp => sp.Stocks.Any(stock => stock.WarehouseId == id)))
+
+                    .ToList();
             }
         }
     }

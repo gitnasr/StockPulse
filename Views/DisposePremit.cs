@@ -9,9 +9,12 @@ namespace StockPulse.Views
 
         private CustomerService CustomerService = new CustomerService();
         private SupplierService SupplierService = new SupplierService();
+        private DisposePremitService DisposePremitService = new DisposePremitService();
         public DisposePremit()
         {
             InitializeComponent();
+            LoadDisposePremits();
+
         }
 
         private void CreateCustomerButton_Click(object sender, EventArgs e)
@@ -56,6 +59,16 @@ namespace StockPulse.Views
                 ItemList.DisplayMember = "Name";
             }
 
+        }
+        private void LoadDisposePremits()
+        {
+            DisposePremitView.DataSource = DisposePremitService.GetAllDisposePremits();
+        }
+        private void CreatePremitButton_Click(object sender, EventArgs e)
+        {
+            var itemsIds = ItemList.SelectedItems.Cast<Stock>().Select(stock => stock.Id).ToArray();
+            DisposePremitService.Create(((Supplier)SupplierComboBox.SelectedItem).Id, itemsIds, ((Customer)CustomerComboBox.SelectedItem).Id);
+            LoadDisposePremits();
         }
     }
 }

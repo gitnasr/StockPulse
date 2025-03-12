@@ -34,6 +34,7 @@
             SupplyPremitButton = new Button();
             button1 = new Button();
             MainPanel = new Panel();
+            button2 = new Button();
             SidePanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             SidePanel.Controls.Add(StockManageButton);
             SidePanel.Controls.Add(SupplyPremitButton);
             SidePanel.Controls.Add(button1);
+            SidePanel.Controls.Add(button2);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.FlowDirection = FlowDirection.TopDown;
             SidePanel.Location = new Point(0, 0);
@@ -106,6 +108,16 @@
             MainPanel.Size = new Size(774, 569);
             MainPanel.TabIndex = 1;
             // 
+            // button2
+            // 
+            button2.Location = new Point(3, 181);
+            button2.Name = "button2";
+            button2.Size = new Size(220, 34);
+            button2.TabIndex = 4;
+            button2.Text = "Transfer";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -131,5 +143,6 @@
         private Panel MainPanel;
         private Button SupplyPremitButton;
         private Button button1;
+        private Button button2;
     }
 }
